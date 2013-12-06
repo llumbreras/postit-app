@@ -1,11 +1,22 @@
-Welcome to PostIt-App!
+<p class='lead'>
+  All Posts
+  <hr/>
+</p>
 
-<ul>
-  <% @posts.each do |post| %>
-  <li>
-  <p><%= post.url %></p>
-  <p><%= post.title %></p>
+<% @posts.each do |post| %>
+  <div class='row'>
+    <div class='span8 well '>
+  <h4><%= link_to post.title, post.url %></h4>
   <p><%= post.description %></p>
-  </li>
+  <p>
+    <span class='quiet'>Posted by </span><%= post.user.username %>
+    <small>at <%= post.created_at %></small>
+    </p>
+    <small>
+      <span>
+        <%= link_to("#{post.comments.size} comments", post_path(post)) %>
+      </span>
+    </small>
+    </div>
+  </div>
 <% end %>
-</ul>
