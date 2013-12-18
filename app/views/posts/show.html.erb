@@ -1,4 +1,4 @@
-<p class='pull-right'>[<%= link_to "Edit Post", edit_post_path %>]</p>
+<p class='pull-right'>[<%= link_to "Edit Post", edit_post_path(@post) %>]</p>
 
 <%= render @post.categories %>
 
@@ -9,3 +9,11 @@
 
 <p><%= @post.description %></p>
 
+<%= form_for [@post, @comment] do |f| %>
+  <%= render 'shared/errors', obj: @comment %>
+  <div class='control-group'>
+    <%= f.label :body, 'Leave a comment' %>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit 'Create comment', class:'btn btn-primary' %>
+<% end %>
