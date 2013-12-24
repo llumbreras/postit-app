@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :get_post, only: [:show,:edit,:update]
+  before_action :require_user, except: [:index,:show]
 
   def index
     @posts = Post.all
@@ -45,5 +46,6 @@ class PostsController < ApplicationController
   def get_post
     @post = Post.find(params[:id])
   end
+
 
 end
