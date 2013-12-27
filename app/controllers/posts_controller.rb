@@ -38,8 +38,12 @@ class PostsController < ApplicationController
   end
 
   def vote
-    Vote.create(voteable: @post, author: current_user, vote: params[:vote])
-    flash[:notice] = "Your vote has been added."
+    vote = Vote.create(voteable: @post, author: current_user, vote: params[:vote])
+    if vote.valid?
+      flash[:notice] = "Your vote has been added."
+    else
+      flash[:error] = "You're only allowed one vote per post."
+    end
     redirect_to :back
   end
 
