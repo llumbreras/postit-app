@@ -5,14 +5,14 @@
       <i class='icon-hand-up'></i>
     <% end %>
     <br />
-    <%= pluralize(post.total_votes, 'vote') %>
+    <span id="post_<%= post.id %>_votes"><%= pluralize(post.total_votes, 'vote') %></span>
     <br />
     <%= link_to vote_post_path(post, vote: false), method: "post", remote: true do %>
       <i class='icon-hand-down'></i>
     <% end %>
   </div>
   <% end %>
-    <div class='span8 well '>
+    <div class='span8 well'>
       <%= render post.categories %>
   <h4><%= link_to post.title, fix_url(post.url) %></h4>
   <p><%= post.description %></p>
