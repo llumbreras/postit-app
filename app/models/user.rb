@@ -7,13 +7,13 @@ class User < ActiveRecord::Base
   validates :username, presence:true, uniqueness:true
   validates :password, presence:true,on: :create,length: {minimum:5}
 
-  before_save :generate_slug
+  before_save :generate_slug!
   
   def to_param
     self.slug
   end
 
-  def generate_slug
+  def generate_slug!
     the_slug = to_slug(self.username)
     user = User.find_by(slug: the_slug)
     count = 2
