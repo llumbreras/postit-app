@@ -1,3 +1,6 @@
+=begin
+# Commented to use the gem - voteable_buddy - instead
+#
 # Using Concerns
 
 module Voteable
@@ -18,6 +21,7 @@ module Voteable
   end
 
 end
+=end
 
 # Using metaprogramming
 =begin
