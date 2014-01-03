@@ -20,11 +20,10 @@
         </li>
       <% end %>
     </ul>
-</ul>
   <% if logged_in? %>
-    <ul class="nav">
-      <li><%= link_to 'New Post', new_post_path %></li>
-      <li><%= link_to '', class:'dropdown-toggle', 'data-toggle' => 'dropdown' do %>
+    <li><%= link_to 'New Post', new_post_path %></li>
+      <li class="dropdown">
+        <%= link_to '', class:'dropdown-toggle', 'data-toggle' => 'dropdown' do %>
           <%= current_user.username %> <span class="caret"></span>
           <% end %>
           <ul class="dropdown-menu">
@@ -42,11 +41,11 @@
               <i class='icon-circle-arrow-right'></i>
               Logout
             <% end %>
-          </li>
-        </ul>
-      </li>
-  <% else %>
+            </li>
+          </ul>
+    </li>
+    <% else %>
       <li><%= link_to 'Register', register_path %><li>
       <li><%= link_to 'Log in', login_path %></li>
-    <% end %>
-  </ul>
+      <% end %>
+</ul>
